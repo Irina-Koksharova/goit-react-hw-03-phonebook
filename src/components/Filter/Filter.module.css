@@ -14,14 +14,14 @@
 
 .label {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   font-size: 15px;
   font-weight: 500;
 }
 
 .reactIcons {
   position: absolute;
-  top: 58.5%;
+  top: 52.5%;
   left: 85%;
   width: 20px;
   height: 20px;

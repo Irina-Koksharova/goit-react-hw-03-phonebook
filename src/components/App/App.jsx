@@ -1,5 +1,8 @@
 import { Component } from 'react';
 import shortid from 'shortid';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import s from './App.module.css';
 import Container from '../../components/Container';
 import Section from '../Section/Section';
 import ContactsForm from '../ContactsForm';
@@ -44,7 +47,15 @@ class App extends Component {
       ? this.setState(({ contacts }) => ({
           contacts: [newContact, ...contacts],
         }))
-      : alert(`${newContact.name} is already in your contacts`);
+      : this.notify(`${newContact.name} is already in your contacts`);
+  };
+
+  notify = message => {
+    toast.dark(message, {
+      className: `${s.toast}`,
+      progressClassName: `${s.progress}`,
+      position: toast.POSITION.TOP_RIGHT,
+    });
   };
 
   handleChangeFilter = e => {
@@ -69,7 +80,15 @@ class App extends Component {
       <Container>
         <Section>
           <h1>Phonebook</h1>
-          <ContactsForm onSubmit={this.handleSubmitForm} />
+          <ContactsForm
+            onSubmit={this.handleSubmitForm}
+            onSubmitError={this.notify}
+          />
+          <ToastContainer
+            autoClose={3000}
+            limit={1}
+            style={{ width: '352px' }}
+          />
         </Section>
 
         {contacts.length > 0 && (

@@ -15,6 +15,15 @@ class ContactsForm extends Component {
 
   handleSubmitForm = e => {
     e.preventDefault();
+    const { name, number } = this.state;
+    if (name.trim() === '') {
+      this.props.onSubmitError('Contact name is missing');
+      return;
+    }
+    if (number.trim() === '') {
+      this.props.onSubmitError('Contact number is missing');
+      return;
+    }
     this.props.onSubmit(this.state);
     this.resetForm();
   };

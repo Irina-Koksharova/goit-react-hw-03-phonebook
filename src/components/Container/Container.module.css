@@ -9,4 +9,6 @@
   background-image: linear-gradient(to bottom, #c5796d, #dbe6f6);
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   border-radius: 10px;
+
+  overflow: hidden;
 }
